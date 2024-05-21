@@ -37,5 +37,8 @@ function searchSubmitHandler(event) {
       lightbox.refresh();
       loaderEl.classList.add('visually-hidden');
     })
-    .catch(error => generateToastError(error.message));
+    .catch(error => {
+      generateToastError(error.message);
+      loaderEl.classList.add('visually-hidden');
+    });
 }

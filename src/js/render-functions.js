@@ -1,8 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-const nothingFetchedMock = document.querySelector('.nothing-fetched');
-
 //=== EXPORT
 export function createGalleryMarkup(imagesArray) {
   if (imagesArray.length === 0) {
@@ -23,14 +21,13 @@ export function createGalleryMarkup(imagesArray) {
 
 export function generateToastError(error) {
   // expected errors
-  if (error.toString() === '400') error = 'Check the request parameters.';
-  if (error.toString() === '404') error = 'Check the endpoint.';
+  if (error.toString() === '400') error = 'Check the request parameters.'; //to test comment the "key" URL parameter
+  if (error.toString() === '404') error = 'Check the endpoint.'; // to test change const END_POINT = '/api/dapi';
+  if (error.toString() === '500') error = 'Try again later.';
   if (error.toString() === 'missing_keyword') error = 'Enter the keyword.';
   if (error.toString() === 'no_images_found')
     error =
       'Sorry, there are no images matching your search query. Please try again!';
-  if (error.toString() === 'Failed to fetch')
-    error = 'Check internet connection.';
   iziToast.show({
     title: 'Oops!',
     message: `${error}`,
